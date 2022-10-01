@@ -1,0 +1,3 @@
+services:
+  whatever:
+    command: tail -F anything

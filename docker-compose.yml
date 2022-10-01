@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  whatever:
+    build: .
+    restart: unless-stopped
+    privileged: true
+    ports:
+      - 8000:8000
+    volumes:
+      - /opt/vc:/opt/vc:ro
+      - .:/workspace
+      - /dev/shm/:/tag_location
+    devices:
+      - /dev/vchiq:/dev/vchiq
+    cap_add:
+      - SYS_ADMIN
+      - NET_ADMIN
+    environment:
+      - TZ=Europe/Athens
+      - LD_LIBRARY_PATH=/opt/vc/lib
+      - SERVICE_PORT=8000
+    command: python3 /workspace/main.py --tag-file /tag_location/current_game.txt
+    # command: python3 -c "import prometheus_client"
