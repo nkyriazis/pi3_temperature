@@ -1,0 +1,1 @@
+* * * * * root /usr/local/bin/prometheus-vcgencmd >/var/lib/prometheus/node-exporter/vcgencmd.prom
